@@ -15,12 +15,9 @@ package acme.features.auditor.auditRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import acme.client.data.models.Dataset;
 import acme.client.services.AbstractService;
-import acme.client.views.SelectChoices;
 import acme.entities.codeAudit.AuditRecord;
 import acme.entities.codeAudit.CodeAudit;
-import acme.entities.codeAudit.Mark;
 import acme.roles.Auditor;
 
 @Service
@@ -64,7 +61,7 @@ public class AuditorAuditRecordDeleteService extends AbstractService<Auditor, Au
 	public void bind(final AuditRecord object) {
 		assert object != null;
 
-		super.bind(object, "code", "codeAudit.code", "periodInit", "periodEnd", "mark", "link", "period");
+		super.bind(object, "code", "periodInit", "periodEnd", "mark", "link", "period");
 	}
 
 	@Override
@@ -79,21 +76,22 @@ public class AuditorAuditRecordDeleteService extends AbstractService<Auditor, Au
 		this.repository.delete(object);
 	}
 
-	@Override
-	public void unbind(final AuditRecord object) {
-		assert object != null;
-
-		Dataset dataset;
-		SelectChoices choicesMark;
-
-		choicesMark = SelectChoices.from(Mark.class, object.getMark());
-
-		dataset = super.unbind(object, "code", "codeAudit.code", "periodInit", "periodEnd", "mark", "link", "period", "isDraftMode");
-		dataset.put("masterId", object.getCodeAudit().getId());
-		dataset.put("draftMode", object.getCodeAudit().isDraftMode());
-		dataset.put("marks", choicesMark);
-
-		super.getResponse().addData(dataset);
-	}
-
+	/**
+	 * @Override
+	 *           public void unbind(final AuditRecord object) {
+	 *           assert object != null;
+	 * 
+	 *           Dataset dataset;
+	 *           SelectChoices choicesMark;
+	 * 
+	 *           choicesMark = SelectChoices.from(Mark.class, object.getMark());
+	 * 
+	 *           dataset = super.unbind(object, "code", "periodInit", "periodEnd", "mark", "link", "period", "isDraftMode");
+	 *           dataset.put("masterId", object.getCodeAudit().getId());
+	 *           dataset.put("draftMode", object.getCodeAudit().isDraftMode());
+	 *           dataset.put("marks", choicesMark);
+	 * 
+	 *           super.getResponse().addData(dataset);
+	 *           }
+	 **/
 }

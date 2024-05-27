@@ -2,4 +2,9 @@ key,key:project,key:auditor,code,execution,type,corrective-actions,mark,link,dra
 code-audit-01,project-02,auditor-01,AFT-149,2015/12/03 23:00,STATIC,Ejemplo 1,,https://example.com/code-audit-01,true
 code-audit-02,project-02,auditor-01,QMD-546,2020/11/03 13:00,STATIC,Ejemplo 2,B,https://example.com/code-audit-02,false
 code-audit-03,project-02,auditor-02,JDK-201,2019/11/02 21:00,DYNAMIC,Ejemplo 3,C,https://example.com/code-audit-03,false
-code-audit-04,project-02,auditor-02,ASD-761,2019/11/01 21:00,DYNAMIC,Ejemplo 4,,https://example.com/code-audit-04,true
+code-audit-04,project-02,auditor-02,ASD-761,2019/11/01 21:00,DYNAMIC,Ejemplo 4,A,https://example.com/code-audit-04,true
+code-audit-05,project-02,auditor-01,ABC-480,2020/11/03 21:00,DYNAMIC,Media F,F,https://example.com/code-audit-05,true
+code-audit-06,project-02,auditor-01,DEF-369,2010/01/03 01:30,STATIC,Media F_MINUS,F_MINUS,https://example.com/code-audit-05,true
+code-audit-07,project-02,auditor-01,HIJ-902,2014/04/06 23:15,STATIC,Ejemplo Vacio,,https://example.com/code-audit-07,true
+code-audit-08,project-02,auditor-01,ADD-551,2015/12/03 23:00,STATIC,Ejemplo Con Varios Audit Record,,https://example.com/code-audit-08,true
+code-audit-09,project-02,auditor-02,BDF-121,2016/11/01 11:00,DYNAMIC,Ejemplo Con Varios Publicados,A,https://example.com/code-audit-09,true

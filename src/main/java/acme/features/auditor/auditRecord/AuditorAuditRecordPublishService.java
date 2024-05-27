@@ -69,7 +69,7 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, A
 	public void bind(final AuditRecord object) {
 		assert object != null;
 
-		super.bind(object, "code", "codeAudit.code", "periodInit", "periodEnd", "mark", "link", "period");
+		super.bind(object, "code", "periodInit", "periodEnd", "mark", "link", "period");
 	}
 
 	@Override
@@ -83,16 +83,16 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, A
 			super.state(existing == null || existing.equals(object), "code", "auditor.audit-record.form.error.duplicated");
 		}
 
-		if (!super.getBuffer().getErrors().hasErrors("periodInit") && !super.getBuffer().getErrors().hasErrors("periodEnd")) {
-			Date minimumPeriod;
-
-			minimumPeriod = MomentHelper.deltaFromMoment(object.getPeriodInit(), 1, ChronoUnit.HOURS);
-
+		if (!super.getBuffer().getErrors().hasErrors("periodInit"))
 			if (!MomentHelper.isBefore(object.getPeriodInit(), object.getPeriodEnd()))
 				super.state(false, "periodInit", "auditor.audit-record.form.error.init-after-end");
-			else if (!MomentHelper.isBeforeOrEqual(minimumPeriod, object.getPeriodEnd()))
-				super.state(false, "periodEnd", "auditor.audit-record.form.error.too-close");
 
+		if (!super.getBuffer().getErrors().hasErrors("periodEnd")) {
+			Date minimumPeriod;
+			minimumPeriod = MomentHelper.deltaFromMoment(object.getPeriodInit(), 1, ChronoUnit.HOURS);
+
+			if (!MomentHelper.isBeforeOrEqual(minimumPeriod, object.getPeriodEnd()))
+				super.state(false, "periodEnd", "auditor.audit-record.form.error.too-close");
 		}
 	}
 
@@ -129,7 +129,7 @@ public class AuditorAuditRecordPublishService extends AbstractService<Auditor, A
 
 		choicesMark = SelectChoices.from(Mark.class, object.getMark());
 
-		dataset = super.unbind(object, "code", "codeAudit.code", "periodInit", "periodEnd", "mark", "link", "period", "isDraftMode");
+		dataset = super.unbind(object, "code", "periodInit", "periodEnd", "mark", "link", "period", "isDraftMode");
 		dataset.put("masterId", object.getCodeAudit().getId());
 		dataset.put("draftMode", object.getCodeAudit().isDraftMode());
 		dataset.put("marks", choicesMark);

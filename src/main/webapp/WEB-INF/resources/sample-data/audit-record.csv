@@ -1,5 +1,15 @@
 key,key:codeAudit,code,period-init,period-end,mark,link,period,isDraftMode
 audit-record-01,code-audit-01,AU-2122-333,2018/12/03 12:00,2018/12/06 13:00,A,https://example.com/audit-record-01,3.0417,true
 audit-record-02,code-audit-02,AU-3654-102,2021/11/03 13:00,2021/11/03 21:00,B,https://example.com/audit-record-02,0.3333,false
-audit-record-03,code-audit-03,AU-3698-341,2020/11/02 21:00,2020/12/02 21:00,C,https://example.com/audit-record-03,30.0,true
-audit-record-04,code-audit-04,AU-4712-901,2020/11/01 21:00,2020/11/06 21:00,F,https://example.com/audit-record-04,5.0,false
+audit-record-03,code-audit-03,AU-3698-341,2020/11/02 21:00,2020/12/02 21:00,C,https://example.com/audit-record-03,30.0,false
+audit-record-04,code-audit-04,AU-4712-901,2020/11/01 21:00,2020/11/06 21:00,A,https://example.com/audit-record-04,5.0,false
+audit-record-05,code-audit-05,AU-4812-911,2020/11/01 21:00,2020/11/06 21:00,F,https://example.com/audit-record-05,5.0,false
+audit-record-06,code-audit-06,AU-3692-011,2020/11/01 21:00,2020/11/06 21:00,F_MINUS,https://example.com/audit-record-06,5.0,false
+audit-record-07,code-audit-08,AU-1414-101,2020/11/01 21:00,2020/11/07 21:00,A,https://example.com/audit-record-07,6.0,true
+audit-record-08,code-audit-08,AU-2222-007,2020/11/01 21:00,2020/11/05 21:00,B,https://example.com/audit-record-08,4.0,true
+audit-record-09,code-audit-08,AU-3182-277,2020/11/01 21:00,2020/11/05 21:00,B,https://example.com/audit-record-09,4.0,false
+audit-record-10,code-audit-08,AU-6850-010,2020/11/01 21:00,2020/11/05 21:00,B,https://example.com/audit-record-10,4.0,false
+audit-record-11,code-audit-09,AU-1101-109,2020/11/01 21:00,2020/11/05 21:00,A,https://example.com/audit-record-11,4.0,false
+audit-record-12,code-audit-09,AU-0890-017,2020/11/01 21:00,2020/11/05 21:00,B,https://example.com/audit-record-12,4.0,false
+audit-record-13,code-audit-09,AU-8801-022,2020/11/01 21:00,2020/11/05 21:00,A,https://example.com/audit-record-13,4.0,false
+audit-record-14,code-audit-09,AU-1440-087,2020/11/01 21:00,2020/11/05 21:00,B,https://example.com/audit-record-14,4.0,false

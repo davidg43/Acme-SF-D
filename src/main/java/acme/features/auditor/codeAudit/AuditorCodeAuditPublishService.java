@@ -110,6 +110,11 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 			super.state(mark != Mark.F_MINUS && mark != Mark.F, "mark", "auditor.code-audit.form.error.not-enought-mark");
 		}
 
+		if (!super.getBuffer().getErrors().hasErrors("project")) {
+			Project project = object.getProject();
+			super.state(!project.isDraft(), "project", "auditor.code-audit.form.error.invalid-project");
+		}
+
 		if (!super.getBuffer().getErrors().hasErrors("*")) {
 			Collection<AuditRecord> auditRecords = this.repository.findManyAuditRecordsByCodeAuditId(object.getId());
 
@@ -142,12 +147,12 @@ public class AuditorCodeAuditPublishService extends AbstractService<Auditor, Cod
 		SelectChoices choicesType;
 		SelectChoices choicesMark;
 
-		projects = this.repository.findAllProjects();
+		projects = this.repository.findAllPublishedProjects();
 		choices = SelectChoices.from(projects, "title", object.getProject());
 		choicesType = SelectChoices.from(Type.class, object.getType());
 		choicesMark = SelectChoices.from(Mark.class, object.getMark());
 
-		dataset = super.unbind(object, "code", "execution", "type", "correctiveActions", "mark", "link", "draftMode");
+		dataset = super.unbind(object, "code", "execution", "type", "correctiveActions", "mark", "link", "draftMode", "project");
 		dataset.put("project", choices.getSelected().getKey());
 		dataset.put("projects", choices);
 		dataset.put("types", choicesType);

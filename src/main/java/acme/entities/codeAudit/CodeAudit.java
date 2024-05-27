@@ -26,6 +26,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+
 public class CodeAudit extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
@@ -50,6 +51,7 @@ public class CodeAudit extends AbstractEntity {
 	private Mark				mark;
 
 	@URL
+	@Length(max = 255)
 	private String				link;
 
 	@NotNull

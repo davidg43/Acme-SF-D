@@ -18,3 +18,4 @@ user-account-client-01,true,"UserIdentity{name: 'Client1', surname: 'Client', em
 user-account-client-02,true,"UserIdentity{name: 'Client2', surname: 'Client', email: 'client2@acme.com'}",client2,client2
 user-account-administrator-02,true,"UserIdentity{name: 'Administrator1', surname: 'Admin', email: 'client1@acme.com'}",administrator1,administrator1
 user-account-administrator-03,true,"UserIdentity{name: 'Administrator2', surname: 'Admin', email: 'client2@acme.com'}",administrator2,administrator2
+user-account-auditor-03,true,"UserIdentity{name: 'Auditor3', surname: 'Auditor', email: 'auditor3@acme.com'}",auditor3,auditor3

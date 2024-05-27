@@ -14,6 +14,7 @@ package acme.features.auditor.codeAudit;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -67,11 +68,15 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 		projectId = super.getRequest().getData("project", int.class);
 		project = this.repository.findOneProjectById(projectId);
 
-		super.bind(object, "code", "execution", "type", "correctiveActions", "mark", "link");
-
 		Date currentMoment = MomentHelper.getCurrentMoment();
 		Date creationMoment = new Date(currentMoment.getTime() - 6000);
 
+		List<Mark> marks = this.repository.findManyMarksByCodeAuditId(object.getId());
+		Mark modeMark = this.repository.getMode(marks);
+
+		super.bind(object, "code", "execution", "type", "correctiveActions", "mark", "link");
+
+		object.setMark(modeMark);
 		object.setProject(project);
 		object.setExecution(creationMoment);
 	}
@@ -85,6 +90,11 @@ public class AuditorCodeAuditCreateService extends AbstractService<Auditor, Code
 
 			existing = this.repository.findOneCodeAuditByCode(object.getCode());
 			super.state(existing == null, "code", "auditor.code-audit.form.error.duplicated");
+		}
+
+		if (!super.getBuffer().getErrors().hasErrors("project")) {
+			Project project = object.getProject();
+			super.state(!project.isDraft(), "project", "auditor.code-audit.form.error.invalid-project");
 		}
 
 	}

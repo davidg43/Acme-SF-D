@@ -42,3 +42,5 @@ auditor.code-audit.form.error.not-enought-mark = Mark must be, at least, C
 auditor.code-audit.form.error.published-audit-record = You cant delete a Code Audit which contains a published Audit Record
 auditor.code-audit.form.error.empty-audit-record = You cant publish and empty Code Audit
 auditor.code-audit.form.error.no-published-audit-record = You cannot publish a Code Audit if all the Audit Records have not been published
+auditor.code-audit.form.error.invalid-project = Please, choose a published project
+auditor.code-audit.form.error.not-null-mark = You cant select a mode mark
